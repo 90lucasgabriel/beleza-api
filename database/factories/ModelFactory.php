@@ -35,6 +35,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 |
 */
 
+$factory->define(App\Models\Branch::class, function (Faker\Generator $faker) {
+    return [
+        'phone'             => $faker->phoneNumber,
+        'address'           => $faker->streetName,
+        'city'              => $faker->city,
+        'state'             => $faker->state,
+        'zipcode'           => $faker->postcode
+    ];
+});
+
 $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     return [
         'name'              => $faker->word
@@ -48,7 +58,7 @@ $factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
         'address'           => $faker->address,
         'city'              => $faker->city,
         'state'             => $faker->state,
-        'zipcode'           => $faker->postcode,
+        'zipcode'           => $faker->postcode
     ];
 });
 
@@ -56,6 +66,23 @@ $factory->define(App\Models\Coupon::class, function (Faker\Generator $faker) {
     return [
         'code'              => rand(100, 10000),
         'value'             => rand(50, 100)
+    ];
+});
+
+$factory->define(App\Models\Establishment::class, function (Faker\Generator $faker) {
+    $host     = 'http://lorempixel.com';
+    $width    = rand(100, 200);
+    $height   = rand(100, 200);
+    $category = 'abstract';
+    $id       = rand(1, 10);
+    
+    $url      = $host . '/' . $width . '/' . $height . '/' . $category . '/' . $id;
+
+    return [
+        'name'              => $faker->company,
+        'cnpj'              => $faker->randomNumber(5),
+        'description'       => $faker->sentence,
+        'image'             => $url 
     ];
 });
 

@@ -31,26 +31,27 @@ class UserTableSeeder extends Seeder
         factory(User::class)->create([
             'first_name'     => 'Client',
             'last_name'      => 'User',
-            'email'          => 'user@email.com',
+            'email'          => 'client@email.com',
             'password'       => bcrypt(123456),
             'remember_token' => str_random(10)
         ])->client()->save(factory(Client::class)->make());
+
+        factory(User::class)->create([
+            'first_name'     => 'Employee',
+            'last_name'      => 'User',
+            'email'          => 'employee@email.com',
+            'role'           => 'employee',
+            'password'       => bcrypt(123456),
+            'remember_token' => str_random(10)
+        ])->client()->save(factory(Client::class)->make());
+
 
         factory(User::class, 10)->create()->each(function($u){
             $u->client()->save(factory(Client::class)->make());
         });
 
-        factory(User::class)->create([
-            'first_name'     => 'Deliveryman',
-            'last_name'      => 'User',
-            'email'          => 'deliveryman@email.com',
-            'role'           => 'deliveryman',
-            'password'       => bcrypt(123456),
-            'remember_token' => str_random(10)
-        ]);
-
         factory(User::class, 3)->create([
-            'role'           => 'deliveryman',
+            'role'           => 'employee',
         ]);
     }
 }

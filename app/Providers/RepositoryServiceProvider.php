@@ -12,6 +12,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\OauthClientRepositoryEloquent::class
         );
         $this->app->bind(
+            \App\Repositories\BranchRepository::class, 
+            \App\Repositories\BranchRepositoryEloquent::class
+        );
+        $this->app->bind(
             \App\Repositories\CategoryRepository::class, 
             \App\Repositories\CategoryRepositoryEloquent::class
         );
@@ -22,6 +26,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             \App\Repositories\CouponRepository::class, 
             \App\Repositories\CouponRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\EstablishmentRepository::class, 
+            \App\Repositories\EstablishmentRepositoryEloquent::class
         );
         $this->app->bind(
             \App\Repositories\OrderRepository::class, 
