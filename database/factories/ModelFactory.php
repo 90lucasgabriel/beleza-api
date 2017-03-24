@@ -45,6 +45,22 @@ $factory->define(App\Models\Branch::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\BranchImage::class, function (Faker\Generator $faker) {
+    $host     = 'http://lorempixel.com';
+    $width    = rand(350, 550);
+    $height   = rand(350, 550);
+    $category = 'fashion';
+    $id       = rand(1, 10);
+    
+    $url      = $host . '/' . $width . '/' . $height . '/' . $category . '/' . $id;
+
+    return [
+        'url'               => $url,
+        'description'       => $faker->sentence,
+        'index'             => 0
+    ];
+});
+
 $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     return [
         'name'              => $faker->word
@@ -82,7 +98,8 @@ $factory->define(App\Models\Establishment::class, function (Faker\Generator $fak
         'name'              => $faker->company,
         'cnpj'              => $faker->randomNumber(5),
         'description'       => $faker->sentence,
-        'image'             => $url 
+        'image'             => $url,//$faker->imageUrl(100,200,'abstract'), 
+        'site'              => $faker->url, 
     ];
 });
 

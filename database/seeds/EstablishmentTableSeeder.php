@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Establishment;
 use App\Models\Branch;
+use App\Models\BranchImage;
 
 class EstablishmentTableSeeder extends Seeder
 {
@@ -21,9 +22,9 @@ class EstablishmentTableSeeder extends Seeder
                     );
 
                     //Create 4 images url for each product
-                    //for($j=0; $j<4; $j++){
-                    //  $p->productImage()->save(factory(ServiceImage::class)->make());
-                    //}
+                    for($j=0; $j<4; $j++){
+                      $p->branchImages()->save(factory(BranchImage::class)->make());
+                    }
                 }
             }
         );

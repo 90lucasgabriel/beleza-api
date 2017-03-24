@@ -12,6 +12,7 @@ class CreateEstablishmentsTable extends Migration
             $table->string('name');
             $table->string('cnpj');
             $table->string('image');
+            $table->string('site');
             $table->text('description');
             $table->timestamps();
         });

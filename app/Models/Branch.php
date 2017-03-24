@@ -23,4 +23,8 @@ class Branch extends Model implements Transformable
         return $this->belongsTo(Establishment::class);
     }
 
+    public function branchImages(){
+        return $this->hasMany(BranchImage::class);
+    }
+
 }

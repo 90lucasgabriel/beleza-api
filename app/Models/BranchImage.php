@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class ProductImage extends Model implements Transformable
+class BranchImage extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -16,8 +16,8 @@ class ProductImage extends Model implements Transformable
         'description',
         'index',
     ];
-/*
-    public function product(){
-        return $this->belongsTo(Product::class);
-    }*/
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
+    }
 }

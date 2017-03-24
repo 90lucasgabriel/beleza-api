@@ -14,7 +14,8 @@ class Establishment extends Model implements Transformable
         'name',
         'cnpj',
         'description',
-        'image'
+        'image',
+        'site'
     ];
 
     public function branches(){
