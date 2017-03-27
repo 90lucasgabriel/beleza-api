@@ -15,7 +15,7 @@ class ChangeOauthClientsTable extends Migration
     public function up()
     {
         Schema::table('oauth_clients', function (Blueprint $table) {
-            $table->string('id', 170)->unique()->change();
+            $table->string('id', 170)->change();
         });
     }
 
