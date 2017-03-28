@@ -14,7 +14,7 @@ class CreateOauthClientsTable extends Migration
     public function up()
     {
         Schema::create('oauth_clients', function (Blueprint $table) {
-            $table->string('id', 170)->unique();
+            $table->string('id', 170)->unique()->primary();
             $table->integer('user_id')->index()->nullable();
             $table->string('name');
             $table->string('secret', 100);
