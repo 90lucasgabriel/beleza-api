@@ -6,18 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class BranchImage extends Model implements Transformable
+class BranchFavorite extends Model implements Transformable
 {
     use TransformableTrait;
 
     protected $fillable = [
-        'branch_id',
-        'url',
-        'description',
-        'index',
+        'user_id',
+        'branch_id'
     ];
 
-    public function branch(){
-        return $this->belongsTo(Branch::class);
-    }
 }

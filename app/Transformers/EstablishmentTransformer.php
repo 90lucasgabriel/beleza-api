@@ -17,8 +17,8 @@ class EstablishmentTransformer extends TransformerAbstract
             'description'   => $model->description,
             'image'         => $model->image,
             'site'          => $model->site,
-            'created_at'    => $model->created_at,
-            'updated_at'    => $model->updated_at
+            //'created_at'    => $model->created_at,
+            //'updated_at'    => $model->updated_at
         ];
     }
 

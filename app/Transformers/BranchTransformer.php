@@ -19,8 +19,8 @@ class BranchTransformer extends TransformerAbstract
             'city'          => $model->city,
             'state'         => $model->state,
             'zipcode'       => $model->zipcode,
-            'created_at'    => $model->created_at,
-            'updated_at'    => $model->updated_at
+            //'created_at'    => $model->created_at,
+            //'updated_at'    => $model->updated_at
         ];
     }
 
@@ -32,5 +32,6 @@ class BranchTransformer extends TransformerAbstract
     public function includeImages(Branch $model){
         return $this->collection($model->branchImages, new BranchImageTransformer());
     }
+
 
 }

@@ -20,4 +20,8 @@ class User extends Authenticatable implements Transformable
     public function client(){
         return $this->hasOne(Client::class);
     }
+
+    public function userBranchFavorites(){
+        return $this->belongsToMany(BranchFavorite::class, 'branch_favorites', 'user_id', 'branch_id')->withTimestamps();
+    }
 }

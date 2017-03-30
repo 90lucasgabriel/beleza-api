@@ -16,6 +16,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\BranchRepositoryEloquent::class
         );
         $this->app->bind(
+            \App\Repositories\BranchFavoriteRepository::class, 
+            \App\Repositories\BranchFavoriteRepositoryEloquent::class
+        );
+        $this->app->bind(
             \App\Repositories\CategoryRepository::class, 
             \App\Repositories\CategoryRepositoryEloquent::class
         );

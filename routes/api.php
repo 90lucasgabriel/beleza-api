@@ -28,9 +28,16 @@ Route::group(['middleware' => 'cors'], function(){
 			});
 
 			Route::group(['prefix' => 'branches', 'as' => 'branches.'], function(){
-				Route::get('/search/{data}', 			['as' => 'search', 	'uses' => 'Api\BranchesController@search']);
-				Route::get('/{id}', 					['as' => 'show', 	'uses' => 'Api\BranchesController@show']);
-				Route::get('', 							['as' => 'index', 	'uses' => 'Api\BranchesController@index']);
+				Route::get('/favorites/{userId}',		['as' => 'favorites', 	'uses' => 'Api\BranchesController@queryFavoritesByUser']);
+				Route::get('/search/{data}', 			['as' => 'search', 		'uses' => 'Api\BranchesController@search']);
+				Route::get('/{id}', 					['as' => 'show', 		'uses' => 'Api\BranchesController@show']);
+				Route::get('', 							['as' => 'index', 		'uses' => 'Api\BranchesController@index']);
+			});
+
+			Route::group(['prefix' => 'branches-favorites', 'as' => 'branches-favorites.'], function(){
+				Route::get('/by-user/{id}', 			['as' => 'by-user', 	'uses' => 'Api\BranchesFavoritesController@queryByUser']);
+				Route::get('/by-branch/{id}', 			['as' => 'by-branch', 	'uses' => 'Api\BranchesFavoritesController@queryByBranch']);
+				Route::get('', 							['as' => 'index', 		'uses' => 'Api\BranchesController@index']);
 			});
 
 

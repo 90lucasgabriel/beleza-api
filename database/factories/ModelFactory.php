@@ -45,6 +45,14 @@ $factory->define(App\Models\Branch::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\BranchFavorite::class, function (Faker\Generator $faker) {
+    return [
+        'user_id'           => rand(2,10),
+        'branch_id'         => rand(2,20),
+    ];
+});
+
+
 $factory->define(App\Models\BranchImage::class, function (Faker\Generator $faker) {
     $host     = 'http://lorempixel.com';
     $width    = rand(350, 550);

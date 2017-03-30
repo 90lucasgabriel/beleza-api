@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Api;
 
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Repositories\BranchRepository;
 use Illuminate\Http\Request;
@@ -33,6 +33,19 @@ class BranchesController extends Controller{
             ->find($id);
         
         return $branch;
+    }
+
+    public function queryFavoritesByUser($userId){
+        $branches = $this
+            ->branchRepository
+            ->skipPresenter(false)
+            ->scopeQuery(function($query) use($userId){
+                return $query
+                    ->join('branch_favorites', 'branches.id', '=', 'branch_favorites.branch_id')
+                    ->where('branch_favorites.user_id', '=', $userId);
+            })->paginate(10);
+
+        return $branches;
     }
 
     public function search($data){

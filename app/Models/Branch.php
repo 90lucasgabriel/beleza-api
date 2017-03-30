@@ -27,4 +27,8 @@ class Branch extends Model implements Transformable
         return $this->hasMany(BranchImage::class);
     }
 
+    public function branchUserFavorites(){
+        return $this->belongsToMany(BranchFavorite::class, 'branch_favorites', 'branch_id', 'user_id')->withTimestamps();
+    }
+
 }
