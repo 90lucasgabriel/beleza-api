@@ -2,14 +2,14 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\Establishment;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Collection;
 
-class EstablishmentTransformer extends TransformerAbstract
+class CompanyTransformer extends TransformerAbstract
 {
     protected $availableIncludes = ['branches'];
 
-    public function transform(Establishment $model)
+    public function transform(Company $model)
     {
         return [
             'id'            => (int) $model->id,
@@ -23,7 +23,7 @@ class EstablishmentTransformer extends TransformerAbstract
     }
 
     
-    public function includeBranches(Establishment $model){
+    public function includeBranches(Company $model){
         return $this->collection($model->branches, new BranchTransformer());
     }
     

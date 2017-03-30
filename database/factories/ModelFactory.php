@@ -93,7 +93,7 @@ $factory->define(App\Models\Coupon::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Establishment::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
     $host     = 'http://lorempixel.com';
     $width    = rand(100, 200);
     $height   = rand(100, 200);

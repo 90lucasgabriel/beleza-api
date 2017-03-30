@@ -3,44 +3,44 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
-use App\Repositories\EstablishmentRepository;
+use App\Repositories\CompanyRepository;
 use Illuminate\Http\Request;
 
-class EstablishmentsController extends Controller{    
-    private $establishmentRepository;
+class CompaniesController extends Controller{    
+    private $companyRepository;
 
     public function __construct(
-        EstablishmentRepository      $establishmentRepository
+        CompanyRepository      $companyRepository
     ){
-        $this->establishmentRepository   = $establishmentRepository;
+        $this->companyRepository   = $companyRepository;
     }
 
 
     public function index(){
-        $establishments = $this
-            ->establishmentRepository
+        $companies = $this
+            ->companyRepository
             ->skipPresenter(false)
             ->paginate(10);
 
-        return $establishments;
+        return $companies;
     }
 
 
     public function show($id)    {
-        $establishment = $this
-            ->establishmentRepository         
+        $company = $this
+            ->companyRepository         
             ->skipPresenter(false)
             ->find($id);
         
-        return $establishment;
+        return $company;
     }
 
     public function search($data){
         $data = '%' . $data . '%';
         //$url = $request->fullUrlWithQuery(['bar' => 'baz']);
         
-        $establishments = $this
-            ->establishmentRepository
+        $companies = $this
+            ->companyRepository
             ->skipPresenter(false)
             ->scopeQuery(function($query) use($data){
                 return $query
@@ -48,8 +48,8 @@ class EstablishmentsController extends Controller{
             }
         )->paginate(10);
 
-        /*$establishments = $this
-            ->establishmentRepository
+        /*$companies = $this
+            ->companyRepository
             ->skipPresenter(false)
             ->findWhere([
                 ['name', 'like', $data],
@@ -57,6 +57,6 @@ class EstablishmentsController extends Controller{
             ])
         ;*/
 
-        return $establishments;
+        return $companies;
     }
 }

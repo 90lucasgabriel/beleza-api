@@ -11,7 +11,7 @@ class Branch extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
-        'establishment_id',
+        'company_id',
         'phone', 
         'address', 
         'city',
@@ -19,8 +19,8 @@ class Branch extends Model implements Transformable
         'zipcode'
     ];
 
-    public function establishment(){
-        return $this->belongsTo(Establishment::class);
+    public function company(){
+        return $this->belongsTo(Company::class);
     }
 
     public function branchImages(){

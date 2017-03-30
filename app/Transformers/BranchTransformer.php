@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class BranchTransformer extends TransformerAbstract
 {
-    protected $defaultIncludes   = ['establishment'];
+    protected $defaultIncludes   = ['company'];
     protected $availableIncludes = ['images'];
 
     public function transform(Branch $model)
@@ -25,8 +25,8 @@ class BranchTransformer extends TransformerAbstract
     }
 
 
-    public function includeEstablishment(Branch $model){
-         return $this->item($model->establishment, new EstablishmentTransformer());
+    public function includeCompany(Branch $model){
+         return $this->item($model->company, new CompanyTransformer());
     }
 
     public function includeImages(Branch $model){

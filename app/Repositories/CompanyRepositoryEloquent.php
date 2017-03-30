@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Presenters\EstablishmentPresenter;
-use App\Repositories\EstablishmentRepository;
-use App\Models\Establishment;
-use App\Validators\EstablishmentValidator;
+use App\Presenters\CompanyPresenter;
+use App\Repositories\CompanyRepository;
+use App\Models\Company;
+use App\Validators\CompanyValidator;
 
 /**
- * Class EstablishmentRepositoryEloquent
+ * Class CompanyRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class EstablishmentRepositoryEloquent extends BaseRepository implements EstablishmentRepository
+class CompanyRepositoryEloquent extends BaseRepository implements CompanyRepository
 {
     protected $skipPresenter = true;
     /**
@@ -23,7 +23,7 @@ class EstablishmentRepositoryEloquent extends BaseRepository implements Establis
      */
     public function model()
     {
-        return Establishment::class;
+        return Company::class;
     }
 
     public function lists($column, $key=null){
@@ -40,6 +40,6 @@ class EstablishmentRepositoryEloquent extends BaseRepository implements Establis
     }
 
     public function presenter(){
-        return EstablishmentPresenter::class;
+        return CompanyPresenter::class;
     }
 }

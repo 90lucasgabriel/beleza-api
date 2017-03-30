@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class BranchFavoriteTransformer extends TransformerAbstract
 {
-    //protected $defaultIncludes   = ['establishment'];
+    //protected $defaultIncludes   = ['company'];
     protected $availableIncludes = ['users', 'branches'];
 
     public function transform(BranchFavorite $model)

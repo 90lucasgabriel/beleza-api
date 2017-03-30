@@ -9,7 +9,7 @@ class CreateBranchesTable extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->increments('id')->onDelete('cascade');
-            $table->integer('establishment_id')->unsigned();
+            $table->integer('company_id')->unsigned();
             $table->string('phone');
             $table->text('address');
             $table->string('city');
@@ -17,7 +17,7 @@ class CreateBranchesTable extends Migration
             $table->string('zipcode');
             $table->timestamps();
             
-            $table->foreign('establishment_id')->references('id')->on('establishments')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

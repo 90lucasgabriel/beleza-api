@@ -21,10 +21,10 @@ Route::group(['middleware' => 'cors'], function(){
 
 		Route::post('/oauth/token', ['as' => 'oauth.token',	'uses' => '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken'])->middleware('checkLogin', 'throttle');		
 		Route::group(['prefix' => 'client', 'as' => 'client.'], function(){
-			Route::group(['prefix' => 'establishments', 'as' => 'establishments.'], function(){
-				Route::get('/search/{data}', 			['as' => 'search', 	'uses' => 'Api\EstablishmentsController@search']);
-				Route::get('/{id}', 					['as' => 'show', 	'uses' => 'Api\EstablishmentsController@show']);
-				Route::get('', 							['as' => 'index', 	'uses' => 'Api\EstablishmentsController@index']);
+			Route::group(['prefix' => 'companies', 'as' => 'companies.'], function(){
+				Route::get('/search/{data}', 			['as' => 'search', 	'uses' => 'Api\CompaniesController@search']);
+				Route::get('/{id}', 					['as' => 'show', 	'uses' => 'Api\CompaniesController@show']);
+				Route::get('', 							['as' => 'index', 	'uses' => 'Api\CompaniesController@index']);
 			});
 
 			Route::group(['prefix' => 'branches', 'as' => 'branches.'], function(){

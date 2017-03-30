@@ -1,20 +1,20 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Establishment;
+use App\Models\Company;
 use App\Models\Branch;
 use App\Models\BranchImage;
 use App\Models\BranchFavorite;
 
-class EstablishmentTableSeeder extends Seeder
+class CompanyTableSeeder extends Seeder
 {
     public function run()
     {
         //DB::statement('TRUNCATE categories CASCADE');
-        Establishment::truncate();
-        factory(Establishment::class, 10)->create()->each(
+        Company::truncate();
+        factory(Company::class, 10)->create()->each(
             function($e){
-                //Create 3 branches for each establishment
+                //Create 3 branches for each company
                 for($i=0; $i<3; $i++){
 
                     //return product created

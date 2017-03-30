@@ -3,11 +3,11 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstablishmentsTable extends Migration
+class CreateCompaniesTable extends Migration
 {
     public function up()
     {
-        Schema::create('establishments', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('id')->onDelete('cascade');
             $table->string('name');
             $table->string('cnpj');
@@ -20,6 +20,6 @@ class CreateEstablishmentsTable extends Migration
 
     public function down()
     {
-        Schema::drop('establishments');
+        Schema::drop('companies');
     }
 }

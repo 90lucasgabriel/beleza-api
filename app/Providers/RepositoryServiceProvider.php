@@ -32,8 +32,8 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\CouponRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\EstablishmentRepository::class, 
-            \App\Repositories\EstablishmentRepositoryEloquent::class
+            \App\Repositories\CompanyRepository::class, 
+            \App\Repositories\CompanyRepositoryEloquent::class
         );
         $this->app->bind(
             \App\Repositories\OrderRepository::class, 

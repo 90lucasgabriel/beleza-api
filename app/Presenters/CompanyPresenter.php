@@ -2,19 +2,19 @@
 
 namespace App\Presenters;
 
-use App\Transformers\EstablishmentTransformer;
+use App\Transformers\CompanyTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class EstablishmentPresenter
+ * Class CompanyPresenter
  *
  * @package namespace App\Presenters;
  */
-class EstablishmentPresenter extends FractalPresenter
+class CompanyPresenter extends FractalPresenter
 {
 
     public function getTransformer()
     {
-        return new EstablishmentTransformer();
+        return new CompanyTransformer();
     }
 }
