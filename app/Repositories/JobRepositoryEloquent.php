@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Presenters\BranchFavoritePresenter;
-use App\Repositories\BranchFavoriteRepository;
-use App\Models\BranchFavorite;
-use App\Validators\BranchValidator;
+use App\Presenters\JobPresenter;
+use App\Repositories\JobRepository;
+use App\Models\Job;
+use App\Validators\JobValidator;
 
 /**
- * Class BranchFavoriteRepositoryEloquent
+ * Class JobRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class BranchFavoriteRepositoryEloquent extends BaseRepository implements BranchRepository
+class JobRepositoryEloquent extends BaseRepository implements JobRepository
 {
     protected $skipPresenter = true;
     /**
@@ -23,7 +23,7 @@ class BranchFavoriteRepositoryEloquent extends BaseRepository implements BranchR
      */
     public function model()
     {
-        return BranchFavorite::class;
+        return Job::class;
     }
 
     public function lists($column, $key=null){
@@ -40,6 +40,6 @@ class BranchFavoriteRepositoryEloquent extends BaseRepository implements BranchR
     }
 
     public function presenter(){
-        return BranchFavoritePresenter::class;
+        return JobPresenter::class;
     }
 }

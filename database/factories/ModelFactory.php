@@ -37,18 +37,24 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Branch::class, function (Faker\Generator $faker) {
     return [
-        'phone'             => $faker->phoneNumber,
-        'address'           => $faker->streetName,
-        'city'              => $faker->city,
-        'state'             => $faker->state,
-        'zipcode'           => $faker->postcode
-    ];
-});
-
-$factory->define(App\Models\BranchFavorite::class, function (Faker\Generator $faker) {
-    return [
-        'user_id'           => rand(2,10),
-        'branch_id'         => rand(2,20),
+        'company_id'   => rand(1,20),
+        
+        'phone_1'      => $faker->e164PhoneNumber,
+        'phone_2'      => $faker->e164PhoneNumber,
+        'email_1'      => $faker->email,
+        'email_2'      => $faker->email,
+        'website'      => $faker->url,
+        'facebook'     => $faker->url,
+        'twitter'      => $faker->url,
+        'instagram'    => $faker->url,
+        
+        'address'      => $faker->streetName,
+        'complement'   => $faker->word,
+        'zipcode'      => $faker->postcode,
+        'neighborhood' => $faker->word,
+        'city'         => $faker->city,
+        'state'        => $faker->state,
+        'country'      => 'Brazil'
     ];
 });
 
@@ -69,20 +75,45 @@ $factory->define(App\Models\BranchImage::class, function (Faker\Generator $faker
     ];
 });
 
-$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\BranchJob::class, function (Faker\Generator $faker) {
     return [
-        'name'              => $faker->word
+        'branch_id'         => rand(1,20),
+        'job_id'            => rand(1,20),
+        'price'             => rand(20, 200),
+        'price_sale'        => rand(20, 200),        
+        'duration'          => (rand(1, 20))/2
     ];
 });
 
+$factory->define(App\Models\BranchJobEmployee::class, function (Faker\Generator $faker) {
+    return [
+        'branch_job_id'     => rand(1,40),
+        'employee_id'       => rand(1,20)
+    ];
+});
+
+$factory->define(App\Models\BranchUserFavorite::class, function (Faker\Generator $faker) {
+    return [
+        'branch_id'         => rand(2,20),
+        'user_id'           => rand(2,10),
+    ];
+});
 
 $factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
     return [
-        'phone'             => $faker->phoneNumber,
-        'address'           => $faker->address,
-        'city'              => $faker->city,
-        'state'             => $faker->state,
-        'zipcode'           => $faker->postcode
+        'user_id'      => rand(1,20),
+        'cpf'          => $faker->randomNumber(5),
+        'cnpj'         => $faker->randomNumber(5),
+        'phone_1'      => $faker->e164PhoneNumber,
+        'phone_2'      => $faker->e164PhoneNumber,
+      
+        'address'      => $faker->streetName,
+        'complement'   => $faker->word,
+        'zipcode'      => $faker->postcode,
+        'neighborhood' => $faker->word,
+        'city'         => $faker->city,
+        'state'        => $faker->state,
+        'country'      => 'Brazil'
     ];
 });
 
@@ -103,11 +134,40 @@ $factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
     $url      = $host . '/' . $width . '/' . $height . '/' . $category . '/' . $id;
 
     return [
-        'name'              => $faker->company,
-        'cnpj'              => $faker->randomNumber(5),
-        'description'       => $faker->sentence,
-        'image'             => $url,//$faker->imageUrl(100,200,'abstract'), 
-        'site'              => $faker->url, 
+        'name'        => $faker->company,
+        'description' => $faker->sentence,
+        'cpf'         => $faker->randomNumber(5),
+        'cnpj'        => $faker->randomNumber(5),
+        'avatar'      => $url,//$faker->imageUrl(100,200,'abstract'),
+
+        'phone_1'     => $faker->e164PhoneNumber,
+        'phone_2'     => $faker->e164PhoneNumber,
+        'email_1'     => $faker->email,
+        'email_2'     => $faker->email,
+        'website'     => $faker->url,
+        'facebook'    => $faker->url,
+        'twitter'     => $faker->url,
+        'instagram'   => $faker->url,
+    ];
+});
+
+$factory->define(App\Models\Employee::class, function (Faker\Generator $faker) {
+    return [
+        'user_id'      => rand(1,20),
+        'branch_id'    => rand(1,30),
+        'cpf'          => $faker->randomNumber(5),
+        'cnpj'         => $faker->randomNumber(5),
+        
+        'phone_1'      => $faker->e164PhoneNumber,
+        'phone_2'      => $faker->e164PhoneNumber,
+        
+        'address'      => $faker->streetName,
+        'complement'   => $faker->word,
+        'zipcode'      => $faker->postcode,
+        'neighborhood' => $faker->word,
+        'city'         => $faker->city,
+        'state'        => $faker->state,
+        'country'      => 'Brazil'
     ];
 });
 
@@ -141,11 +201,24 @@ $factory->define(App\Models\OrderItem::class, function (Faker\Generator $faker) 
 });
 
 
-$factory->define(App\Models\Service::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Job::class, function (Faker\Generator $faker) {
     return [
         'name'              => $faker->word,
         'description'       => $faker->sentence,
-        'price'             => $faker->numberBetween(10, 50)
+        //'price'             => $faker->numberBetween(10, 50)
+    ];
+});
+
+$factory->define(App\Models\JobCategory::class, function (Faker\Generator $faker) {
+    return [
+        'name'              => $faker->word,
+        'description'       => $faker->sentence,
+    ];
+});
+
+$factory->define(App\Models\Time::class, function (Faker\Generator $faker) {
+    return [
+        'description'       => $faker->time
     ];
 });
 
@@ -156,5 +229,12 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'email'             => $faker->unique()->safeEmail,
         'password'          => bcrypt(str_random(10)),
         'remember_token'    => str_random(10),
+    ];
+});
+
+
+$factory->define(App\Models\Weekday::class, function (Faker\Generator $faker) {
+    return [
+        'description'       => $faker->dayOfWeek,
     ];
 });

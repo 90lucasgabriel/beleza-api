@@ -34,11 +34,21 @@ Route::group(['middleware' => 'cors'], function(){
 				Route::get('', 							['as' => 'index', 		'uses' => 'Api\BranchesController@index']);
 			});
 
-			Route::group(['prefix' => 'branches-favorites', 'as' => 'branches-favorites.'], function(){
-				Route::get('/by-user/{id}', 			['as' => 'by-user', 	'uses' => 'Api\BranchesFavoritesController@queryByUser']);
-				Route::get('/by-branch/{id}', 			['as' => 'by-branch', 	'uses' => 'Api\BranchesFavoritesController@queryByBranch']);
-				Route::get('', 							['as' => 'index', 		'uses' => 'Api\BranchesController@index']);
+			Route::group(['prefix' => 'jobs', 'as' => 'jobs.'], function(){
+				Route::get('/by-branch/{branchId}',		['as' => 'by-branch',	'uses' => 'Api\BranchesJobsController@queryJobsByBranch']);
+				Route::get('/search/{data}', 			['as' => 'search', 		'uses' => 'Api\JobsController@search']);
+				Route::get('/{id}', 					['as' => 'show', 		'uses' => 'Api\JobsController@show']);
+				Route::get('', 							['as' => 'index', 		'uses' => 'Api\JobsController@index']);
 			});
+
+			Route::group(['prefix' => 'employees', 'as' => 'employees.'], function(){
+				Route::get('/by-branch-job/{branchJobId}',		['as' => 'by-branch-job',		'uses' => 'Api\BranchJobEmployeesController@queryEmployeesByBranchJob']);
+				Route::get('/branch/{branchId}/job/{jobId}',	['as' => 'by-branch-and-job',	'uses' => 'Api\EmployeesController@queryEmployeesByBranchAndJob']);
+				Route::get('/search/{data}', 					['as' => 'search', 				'uses' => 'Api\EmployeesController@search']);
+				Route::get('/{id}', 							['as' => 'show', 				'uses' => 'Api\EmployeesController@show']);
+				Route::get('', 									['as' => 'index', 				'uses' => 'Api\EmployeesController@index']);
+			});
+
 
 
 			Route::resource('orders', 'Api\ClientCheckoutController', ['except' => ['create', 'edit', 'destroy']]);

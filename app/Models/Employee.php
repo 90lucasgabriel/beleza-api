@@ -6,18 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Client extends Model implements Transformable
+class Employee extends Model implements Transformable
 {
     use TransformableTrait;
-
+    
     protected $fillable = [
         'user_id',
+        'branch_id',
+        
         'cpf',
         'cnpj',
         'phone_1', 
         'phone_2',
-
-        'address', 
+        
+        'address',
         'complement', 
         'zipcode',
         'neighborhood', 

@@ -25,7 +25,7 @@ class ChangeUsersTable extends Migration
             $table->string('social')->nullable()->default('local');
             $table->string('id_social', 170)->unique()->nullable();
 
-            $table->string('picture')->nullable();
+            $table->string('avatar')->nullable();
 
             /*
             $table->integer('social')->unsigned()->default(0);

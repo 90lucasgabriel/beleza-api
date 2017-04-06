@@ -2,19 +2,19 @@
 
 namespace App\Presenters;
 
-use App\Transformers\BranchFavoriteTransformer;
+use App\Transformers\JobTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class BranchFavoritePresenter
+ * Class JobPresenter
  *
  * @package namespace App\Presenters;
  */
-class BranchFavoritePresenter extends FractalPresenter
+class JobPresenter extends FractalPresenter
 {
 
     public function getTransformer()
     {
-        return new BranchFavoriteTransformer();
+        return new JobTransformer();
     }
 }

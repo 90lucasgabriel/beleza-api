@@ -6,15 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Category extends Model implements Transformable
+class Weekday extends Model implements Transformable
 {
     use TransformableTrait;
-    
+
     protected $fillable = [
-        'name'
+        'id',
+        'description'
     ];
 
-    public function services(){
-        return $this->hasMany(Service::class);
-    }
 }

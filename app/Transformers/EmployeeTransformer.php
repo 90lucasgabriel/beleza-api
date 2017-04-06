@@ -3,28 +3,28 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\Client;
+use App\Models\Employee;
 
 /**
- * Class ClientTransformer
+ * Class EmployeeTransformer
  * @package namespace App\Transformers;
  */
-class ClientTransformer extends TransformerAbstract
+class EmployeeTransformer extends TransformerAbstract
 {
-
 
     protected $defaultIncludes = ['user'];
     /**
-     * Transform the \Client entity
-     * @param \Client $model
+     * Transform the \Employee entity
+     * @param \Employee $model
      *
      * @return array
      */
-    public function transform(Client $model)
+    public function transform(Employee $model)
     {
         return [
             'id'           => (int) $model->id,
             'user_id'      => (int) $model->user_id,
+            'branch_id'    => (int) $model->branch_id,
             
             'cpf'          => $model->cpf,
             'cnpj'         => $model->cnpj,
@@ -37,14 +37,11 @@ class ClientTransformer extends TransformerAbstract
             'neighborhood' => $model->neighborhood,
             'city'         => $model->city,
             'state'        => $model->state,
-            'country'      => $model->country,
-
-            'created_at'   => $model->created_at,
-            'updated_at'   => $model->updated_at
+            'country'      => $model->country
         ];
     }
 
-    public function includeUser(Client $model){
+    public function includeUser(Employee $model){
         return $this->item($model->user, new UserTransformer());
     }
 }

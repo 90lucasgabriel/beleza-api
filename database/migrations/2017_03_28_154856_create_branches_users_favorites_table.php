@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBranchFavoritesTable extends Migration
+class CreateBranchesUsersFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateBranchFavoritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('branch_favorites', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->nullable();
+        Schema::create('branches_users_favorites', function (Blueprint $table) {
             $table->integer('branch_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateBranchFavoritesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('branch_favorites');
+        Schema::drop('branches_users_favorites');
     }
 }

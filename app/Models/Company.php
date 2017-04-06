@@ -12,10 +12,19 @@ class Company extends Model implements Transformable
     
     protected $fillable = [
         'name',
-        'cnpj',
         'description',
-        'image',
-        'site'
+        'cpf',
+        'cnpj',
+        'avatar',
+        
+        'phone_1', 
+        'phone_2',
+        'email_1',
+        'email_2',
+        'website',
+        'facebook',
+        'twitter',
+        'instagram'      
     ];
 
     public function branches(){

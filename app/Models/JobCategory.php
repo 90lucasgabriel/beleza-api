@@ -6,13 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class BranchFavorite extends Model implements Transformable
+class JobCategory extends Model implements Transformable
 {
     use TransformableTrait;
 
     protected $fillable = [
-        'user_id',
-        'branch_id'
+        'id',
+        'name',
+        'description'
     ];
+
+    public function jobs(){
+        return $this->hasMany(Job::class);
+    }
 
 }

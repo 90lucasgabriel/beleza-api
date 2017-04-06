@@ -1,25 +1,25 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Category;
-use App\Models\Service;
+use App\Models\JobCategory;
+use App\Models\Job;
 
-class CategoryTableSeeder extends Seeder
+class JobCategoryTableSeeder extends Seeder
 {
     public function run()
     {
         //DB::statement('TRUNCATE categories CASCADE');
-        Category::truncate();
-        factory(Category::class)->create([
+        JobCategory::truncate();
+        factory(JobCategory::class)->create([
             'name'           => 'Masculino'
         ])->each(
             function($c){
-                //Create 5 services for each category
+                //Create 5 jobs for each category
                 for($i=0; $i<10; $i++){
 
                     //return product created
-                    $p = $c->services()->save(
-                        factory(Service::class)->make()
+                    $p = $c->jobs()->save(
+                        factory(Job::class)->make()
                     );
 
                     //Create 4 images url for each product
@@ -30,14 +30,14 @@ class CategoryTableSeeder extends Seeder
             }
         );
 
-        factory(Category::class)->create([
+        factory(JobCategory::class)->create([
             'name'           => 'Feminino'
         ])->each(
             function($c){
-                //Create 5 services for each category
+                //Create 5 jobs for each category
                 for($i=0; $i<10; $i++){
-                    $p = $c->services()->save(
-                        factory(Service::class)->make()
+                    $p = $c->jobs()->save(
+                        factory(Job::class)->make()
                     );
                 }
             }

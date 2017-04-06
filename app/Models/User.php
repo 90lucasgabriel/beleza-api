@@ -14,11 +14,24 @@ class User extends Authenticatable implements Transformable
     use HasApiTokens, Notifiable, TransformableTrait;
 
     protected $table = 'users';
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'remember_token', 'social', 'id_social', 'picture'];
+    protected $fillable = [
+        'first_name', 
+        'last_name', 
+        'email', 
+        'password', 
+        'remember_token', 
+        'social', 
+        'id_social', 
+        'avatar'];
+
     protected $hidden = ['password', 'remember_token'];
 
     public function client(){
         return $this->hasOne(Client::class);
+    }
+
+    public function employee(){
+        return $this->hasOne(Employee::class);
     }
 
     public function userBranchFavorites(){

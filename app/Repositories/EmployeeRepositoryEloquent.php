@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Presenters\ClientPresenter;
-use App\Repositories\ClientRepository;
-use App\Models\Client;
-use App\Validators\ClientValidator;
+use App\Presenters\EmployeePresenter;
+use App\Repositories\EmployeeRepository;
+use App\Models\Employee;
+use App\Validators\EmployeeValidator;
 
 /**
- * Class ClientRepositoryEloquent
+ * Class EmployeeRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
+class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepository
 {
     protected $skipPresenter = true;
     /**
@@ -23,7 +23,7 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
      */
     public function model()
     {
-        return Client::class;
+        return Employee::class;
     }
 
     public function lists($column, $key=null){
@@ -40,6 +40,6 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
     }
 
     public function presenter(){
-        return ClientPresenter::class;
+        return EmployeePresenter::class;
     }
 }

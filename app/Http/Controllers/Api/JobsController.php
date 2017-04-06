@@ -3,58 +3,59 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Repositories\BranchRepository;
+use App\Repositories\JobRepository;
 use Illuminate\Http\Request;
 
-class BranchesController extends Controller{    
-    private $branchRepository;
+class JobsController extends Controller{    
+    private $jobRepository;
 
     public function __construct(
-        BranchRepository      $branchRepository
+        JobRepository      $jobRepository
     ){
-        $this->branchRepository   = $branchRepository;
+        $this->jobRepository   = $jobRepository;
     }
 
 
     public function index(){
-        $branches = $this
-            ->branchRepository
+        $jobs = $this
+            ->jobRepository
             ->skipPresenter(false)
             ->paginate(10);
 
-        return $branches;
+        return $jobs;
     }
 
 
     public function show($id)    {
-        $branch = $this
-            ->branchRepository         
+        $job = $this
+            ->jobRepository         
             ->skipPresenter(false)
             ->find($id);
         
-        return $branch;
+        return $job;
     }
 
-    public function queryFavoritesByUser($userId){
-        $branches = $this
-            ->branchRepository
+    public function queryJobsByBranch($branchId){
+        $jobs = $this
+            ->jobRepository
             ->skipPresenter(false)
-            ->scopeQuery(function($query) use($userId){
+            ->scopeQuery(function($query) use($branchId){
                 return $query
-                    ->join('user_branch_favorites', 'branches.id', '=', 'branches_users_favorites.branch_id')
-                    ->where('user_branch_favorites.user_id', '=', $userId);
+                    ->join('branches_jobs', 'jobs.id', '=', 'branches_jobs.job_id')
+                    ->where('branches_jobs.branch_id', '=', $branchId)
+                    ->select('job_id as id', 'price', 'price_sale', 'duration');
             })->paginate(10);
 
-        return $branches;
+        return $jobs;
     }
 
-   
+
     public function search($data){
         $data = '%' . $data . '%';
         //$url = $request->fullUrlWithQuery(['bar' => 'baz']);
         
-        $branches = $this
-            ->branchRepository
+        $jobs = $this
+            ->jobRepository
             ->skipPresenter(false)
             ->scopeQuery(function($query) use($data){
                 return $query
@@ -62,8 +63,8 @@ class BranchesController extends Controller{
             }
         )->paginate(10);
 
-        /*$branches = $this
-            ->branchRepository
+        /*$jobs = $this
+            ->jobRepository
             ->skipPresenter(false)
             ->findWhere([
                 ['name', 'like', $data],
@@ -71,6 +72,6 @@ class BranchesController extends Controller{
             ])
         ;*/
 
-        return $branches;
+        return $jobs;
     }
 }

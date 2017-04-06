@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * Interface BranchRepository
  * @package namespace App\Repositories;
  */
-interface BranchFavoriteRepository extends RepositoryInterface
+interface BranchJobEmployeeRepository extends RepositoryInterface
 {
     //
 }

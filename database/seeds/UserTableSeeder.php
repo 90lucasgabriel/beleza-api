@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Client;
+use App\Models\Employee;
+use App\Models\User;
 
 class UserTableSeeder extends Seeder
 {
@@ -50,8 +51,10 @@ class UserTableSeeder extends Seeder
             $u->client()->save(factory(Client::class)->make());
         });
 
-        factory(User::class, 3)->create([
+        factory(User::class, 50)->create([
             'role'           => 'employee',
-        ]);
+        ])->each(function($u){
+            $u->employee()->save(factory(Employee::class)->make());
+        });;
     }
 }

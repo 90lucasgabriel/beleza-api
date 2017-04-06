@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Service extends Model implements Transformable
+class BranchJobEmployee extends Model implements Transformable
 {
     use TransformableTrait;
 
     protected $fillable = [
-        'category_id',
-        'name',
-        'description',
-        'price',
+        'branch_job_id',
+        'employee_id'
     ];
 
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function employee(){
+        return $this->hasOne(Employee::class, 'id', 'employee_id');
     }
+
+
 
 }

@@ -12,11 +12,23 @@ class Branch extends Model implements Transformable
 
     protected $fillable = [
         'company_id',
-        'phone', 
-        'address', 
+        
+        'phone_1', 
+        'phone_2',
+        'email_1',
+        'email_2',
+        'website',
+        'facebook',
+        'twitter',
+        'instagram',
+        
+        'address',
+        'complement', 
+        'zipcode',
+        'neighborhood', 
         'city',
         'state', 
-        'zipcode'
+        'country' 
     ];
 
     public function company(){
@@ -28,7 +40,11 @@ class Branch extends Model implements Transformable
     }
 
     public function branchUserFavorites(){
-        return $this->belongsToMany(BranchFavorite::class, 'branch_favorites', 'branch_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(UserBranchFavorite::class, 'user_branch_favorites', 'branch_id', 'user_id')->withTimestamps();
+    }
+
+    public function branchJobs(){
+        return $this->belongsToMany(BranchJob::class, 'branches_jobs', 'job_id', 'branch_id')->withTimestamps();
     }
 
 }
